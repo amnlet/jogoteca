@@ -12,15 +12,11 @@ jogo3 = Jogo("Dota","MOBA","PC")
 lista = [jogo1,jogo2,jogo3]
 
 
-
 app = Flask(__name__)
 
-
 @app.route('/')
-
 def index():
     return render_template('lista.html', titulo="Jogos", jogos=lista)
-
 @app.route('/novo')
 def novo():
     return render_template('novo.html', titulo='Novo Jogo')
@@ -34,5 +30,9 @@ def criar():
     lista.append(novo_jogo)
     return redirect('/')
 
+@app.route('/criar', methods=['POST',])
+def add_1():
+    request.form['click']
+    return render_template('novo.html', titulo='Novo Jogo')
 
 app.run(host='localhost', port=8080, debug=True) 
